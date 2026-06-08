@@ -203,16 +203,5 @@ O sistema utiliza comunicação MQTT via Wi-Fi para envio contínuo de dados em 
 
 # 👨‍💻 Integrante
 
-- Felipe Ribeiro Salles
-
----
-
-# 📚 Disciplina
-
-Internet das Coisas (IoT)
-
----
-
-# 🏆 Resultado
-
-O sistema AgroSphere realiza monitoramento climático inteligente em tempo real utilizando arquitetura IoT completa baseada em ESP32, MQTT e Node-RED, permitindo visualização de dados, automação e comunicação via Wi-Fi.
+- Felipe Ribeiro Salles de Camargo RM: 565224
+- João Victor Santana os Santos RM: 566063
