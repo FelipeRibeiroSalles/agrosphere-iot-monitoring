@@ -1,0 +1,271 @@
+[
+    {
+        "id": "e60688610f7c43e0",
+        "type": "tab",
+        "label": "AgroSphere",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2580cb544d3189a2",
+        "type": "function",
+        "z": "e60688610f7c43e0",
+        "name": "function 1",
+        "func": "var data = msg.payload;\n\nreturn [\n    { payload: data.solo },\n    { payload: data.temperatura },\n    { payload: data.umidade },\n    { payload: data.temperatura },\n    { payload: data.status }\n];\n\n",
+        "outputs": 5,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 400,
+        "wires": [
+            [
+                "27522b355380b575"
+            ],
+            [
+                "452d09b5817a5d8e"
+            ],
+            [
+                "a1dace9eaa7757ac"
+            ],
+            [
+                "882db5c43da1957e"
+            ],
+            [
+                "79c47db3c462405a"
+            ]
+        ]
+    },
+    {
+        "id": "638d271a44f0ae89",
+        "type": "mqtt in",
+        "z": "e60688610f7c43e0",
+        "name": "",
+        "topic": "agrosphere/dados",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ee86de307a739f37",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "2580cb544d3189a2"
+            ]
+        ]
+    },
+    {
+        "id": "27522b355380b575",
+        "type": "ui_gauge",
+        "z": "e60688610f7c43e0",
+        "name": "",
+        "group": "grupo1",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "solo",
+        "label": "ADC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "452d09b5817a5d8e",
+        "type": "ui_gauge",
+        "z": "e60688610f7c43e0",
+        "name": "",
+        "group": "grupo1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 730,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a1dace9eaa7757ac",
+        "type": "ui_gauge",
+        "z": "e60688610f7c43e0",
+        "name": "",
+        "group": "grupo1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "umidade",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 820,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "882db5c43da1957e",
+        "type": "ui_chart",
+        "z": "e60688610f7c43e0",
+        "name": "",
+        "group": "grupo1",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "gráfico temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79c47db3c462405a",
+        "type": "ui_text",
+        "z": "e60688610f7c43e0",
+        "group": "grupo1",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "status climático",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 740,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "ee86de307a739f37",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "grupo1",
+        "type": "ui_group",
+        "name": "AgroSPHERE",
+        "tab": "tab1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "tab1",
+        "type": "ui_tab",
+        "name": "AgroSphere Iot",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c40d730af6eb7590",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
